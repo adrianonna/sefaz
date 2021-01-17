@@ -16,8 +16,13 @@ public class UsuarioController implements Serializable{
 	@Inject
 	private UsuarioDAO usuarioDAO;
 	
+	@Transactional
 	public void excluir(Usuario usuario) {
 		usuarioDAO.delete(usuario);
+	}
+	
+	public void refresh(Usuario usuario) {
+		usuarioDAO.refresh(usuario);
 	}
 	
 	public List<Usuario> findAll(){
@@ -28,13 +33,23 @@ public class UsuarioController implements Serializable{
 		return usuarioDAO.find(id);
 	}
 	
-	public Usuario edit(Usuario usuario) {
+	@Transactional
+	public Usuario update(Usuario usuario) {
 		return usuarioDAO.update(usuario);
 	}
 	
 	@Transactional
 	public Usuario insert(Usuario usuario) {
 		return usuarioDAO.insert(usuario);
+	}
+	
+	@Transactional
+	public void saveOrUpdate(Usuario usuario) {
+		if (usuario.getId() != null) {
+			usuario = usuarioDAO.update(usuario);
+		} else {
+			usuarioDAO.insert(usuario);
+		}
 	}
 		
 

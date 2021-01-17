@@ -6,7 +6,8 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 <f:metadata>
-	<f:viewParam name="id" value="#{consultaBean.id}"></f:viewParam>
+	<f:viewParam name="id" value="#{consultaBean.id}" />
+	<f:viewAction action="#{consultaBean.init()}"></f:viewAction>
 </f:metadata>
 
 <h:head>
@@ -37,7 +38,8 @@
 				</p:column>
 				
 				<p:column headerText="Nome" style="text-align:center">
-					#{usuario.nome}
+					<h:outputText value="#{usuario.nome}" id="_nome" />
+					<p:tooltip for="_nome" value="#{usuario.id}" position="bottom" />
 				</p:column>
 				
 				<p:column headerText="Email" style="text-align:center">
@@ -49,8 +51,8 @@
 				</p:column>
 				
 				<p:column headerText="Ações">
-					<p:commandButton action="#{consultaBean.excluir(usuario)}" value="Excluir" icon="fa fa-trash" ajax="false"/>
-					<p:commandButton action="#{consultaBean.editar(usuario)}" value="Editar" icon="fa fa-edit" ajax="false"/>
+					<p:commandButton action="#{consultaBean.excluir(usuario)}" value="Excluir" title="Excluir" icon="fa fa-trash" ajax="false"/>
+					<p:commandButton action="#{consultaBean.editar(usuario)}" value="Editar" title="Editar" icon="fa fa-edit" ajax="false"/>
 				</p:column>
 			</p:dataTable>
 		</h:form>

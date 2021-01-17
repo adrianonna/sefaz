@@ -2,6 +2,7 @@ package br.gov.pe.sefaz.bean;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,11 +22,28 @@ public class CadastroBean extends GenericoSefazBean implements Serializable{
 	@Inject
 	private UsuarioController uController;
 	
-	public String cadastrar() {
-		uController.insert(usuario);
+	@PostConstruct
+	public void init() {
+		Usuario usuarioFlash = (Usuario) this.getFlash("usuario");
+		if (usuarioFlash != null) {
+			this.usuario = usuarioFlash;
+		}
+	}
+	
+	
+	public String cadastrar() {		
+		Integer id = usuario.getId();
+		uController.saveOrUpdate(usuario);
+		
+		this.keepMessages();
+		if (id == null) {
+			this.addInfoMessage("Usuarios cadastrado com sucesso!");			
+		} else {
+			this.addInfoMessage("Usuarios atualizado com sucesso!");	
+		}
+		
 		usuario = new Usuario();
-		this.addInfoMessage("Usuarios cadastrado com sucesso!");
-		return null;
+		return "consulta?faces-redirect=true";
 	}
 
 	public Usuario getUsuario() {

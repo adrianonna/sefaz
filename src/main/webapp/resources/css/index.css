@@ -1,0 +1,15 @@
+body {
+	font-family: Calibri !important;
+	font-size: 0.8em !important;
+}
+
+
+.titulo {
+	font-size: 1.5rem;
+	background-color: #ededed;
+	margin: 5px 0 20px 0;
+}
+
+.icon-space {
+	margin: 2px 5px 2px 5px;
+}

@@ -34,19 +34,31 @@
 					<p:outputLabel value="Email:" for="email" />
 					<p:inputText value="#{cadastroBean.usuario.email}" id="email"
 						required="true" requiredMessage="Email é obrigatório!"/>
-					<p:tooltip for="nome" value="Informe seu email!" position="bottom" />
+					<p:tooltip for="email" value="Informe seu email!" position="bottom" />
 				</div>
 				<div class="ui-g-3">
 					<p:outputLabel value="Senha:" for="senha" />
 					<p:password value="#{cadastroBean.usuario.senha}" id="senha"
 						required="true" requiredMessage="Senha é obrigatória!" maxlength="8" />
-					<p:tooltip for="nome" value="Informe sua senha!" position="bottom" />
+					<p:tooltip for="senha" value="Informe sua senha!" position="bottom" />
 				</div>
 				<div class="ui-g-3">
-					<p:outputLabel value="Telefone:" for="telefone" />
-					<p:inputText value="#{cadastroBean.usuario.telefone}" id="telefone"
-						required="true" requiredMessage="Telefone é obrigatório!"/>
-					<p:tooltip for="nome" value="Informe seu telefone!" position="bottom" />
+					<p:outputLabel value="DDD:" for="ddd" />
+					<p:inputText value="#{cadastroBean.telefone.ddd}" id="ddd" maxlength="2"
+						required="true" requiredMessage="DDD é obrigatório!"/>
+					<p:tooltip for="ddd" value="Informe seu DDD!" position="bottom" />
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Numero:" for="numero" />
+					<p:inputText value="#{cadastroBean.telefone.numero}" id="numero"
+						required="true" requiredMessage="Número é obrigatório!"/>
+					<p:tooltip for="numero" value="Informe seu número!" position="bottom" />
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Tipo:" for="tipo" />
+					<p:inputText value="#{cadastroBean.telefone.tipo}" id="tipo"
+						required="true" requiredMessage="Tipo é obrigatório!"/>
+					<p:tooltip for="tipo" value="Informe o tipo!" position="bottom" />
 				</div>
 			</div>
 			

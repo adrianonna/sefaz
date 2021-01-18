@@ -12,6 +12,7 @@
 		<non-jta-data-source>java:/sefaz-ds</non-jta-data-source>
 		
 		<class>br.gov.pe.sefaz.model.Usuario</class>
+		<class>br.gov.pe.sefaz.model.Telefone</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />

@@ -46,7 +46,6 @@ public abstract class GenericDAO<T, PK extends Serializable> implements IGeneric
 
 	@Override
 	public void delete(T t) {
-		System.out.println("t= "+t);
 		t = this.entityManager.merge(t);
 		this.entityManager.remove(t);
 	}

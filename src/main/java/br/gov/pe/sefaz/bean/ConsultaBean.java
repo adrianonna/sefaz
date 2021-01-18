@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.context.FacesContext;
-import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,13 +45,9 @@ public class ConsultaBean extends GenericoSefazBean implements Serializable{
 	
 	public String excluirSelecionados() {
 		Usuario u = null;
-		System.out.println("checked= "+checked);
-		System.out.println("checked.keySet()= "+checked.keySet());
 		for (Integer id : checked.keySet()) {
-			System.out.println("checked.get(id)= "+checked.get(id));
 			if (checked.get(id)) {
 				u = uController.find(id);
-				System.out.println("u= "+u);
 				uController.excluir(u);
 			}
 		}
@@ -66,28 +60,12 @@ public class ConsultaBean extends GenericoSefazBean implements Serializable{
 	public String editar(Usuario usuario) {
 		this.putFlash("usuario", usuario);
 		return "cadastro?faces-redirect=true";
-//		return "edit?faces-redirect=true";
 	}
-	
-//	public String salvaEditar() {
-//		Flash fs = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-//		Usuario usuario = (Usuario) fs.get("usuario"); //usuario alterado
-//		uController.update(usuario);
-////		uController.find(usuario.getId());
-//		this.addInfoMessage("Usuario editado com sucesso!");
-//		return null;
-//	}
-//	
-//	public void carregueDadosDoFlash() {
-//		Flash fs = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-//		this.setUsuario((Usuario) fs.get("usuario"));
-//	}
 	
 	
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -95,7 +73,6 @@ public class ConsultaBean extends GenericoSefazBean implements Serializable{
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-	
 	public void setUsuario(List<Usuario> usuario) {
 		this.usuarios = usuario;
 	}
@@ -103,7 +80,6 @@ public class ConsultaBean extends GenericoSefazBean implements Serializable{
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
@@ -111,7 +87,6 @@ public class ConsultaBean extends GenericoSefazBean implements Serializable{
 	public Map<Integer, Boolean> getChecked() {
 		return checked;
 	}
-
 	public void setChecked(Map<Integer, Boolean> checked) {
 		this.checked = checked;
 	}

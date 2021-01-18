@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
 	<title>Tela Inicial</title>
@@ -11,8 +12,10 @@
 </h:head>
 <h:body style="font-family: Calibri">
 
-	<p:commandButton action="#{loginBean.encerrar}" value="Sair" icon="fa fa-sign-out-alt"/>
-
+	<ui:remove>
+		<!-- <p:commandButton action="#{loginBean.encerrar}" value="Sair" icon="fa fa-sign-out-alt"/> -->
+	</ui:remove>
+	
 	<h1>Parabéns, seu login foi bem sucedido, #{loginBean.usuario.email}</h1>
 	
 	<p:button href="usuario/cadastro.xhtml" value="Cadastrar"/>

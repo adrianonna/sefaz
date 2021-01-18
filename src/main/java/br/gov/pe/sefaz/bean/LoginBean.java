@@ -3,9 +3,7 @@ package br.gov.pe.sefaz.bean;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 import br.gov.pe.sefaz.model.Usuario;
 
@@ -26,12 +24,12 @@ public class LoginBean extends GenericoSefazBean implements Serializable{
 	}
 	
 	//Não está funcionando!!!
-	public String encerrar() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-		session.invalidate();
-		return "login?faces-redirect=true";		
-	}
+//	public String encerrar() {
+//		FacesContext fc = FacesContext.getCurrentInstance();
+//		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+//		session.invalidate();
+//		return "login?faces-redirect=true";		
+//	}
 
 	public Usuario getUsuario() {
 		return usuario;

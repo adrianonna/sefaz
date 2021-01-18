@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import br.gov.pe.sefaz.dao.TelefoneDAO;
 import br.gov.pe.sefaz.dao.Transactional;
 import br.gov.pe.sefaz.model.Telefone;
+import br.gov.pe.sefaz.model.Usuario;
 
 public class TelefoneController implements Serializable{
 
@@ -44,11 +45,12 @@ public class TelefoneController implements Serializable{
 	}
 	
 	@Transactional
-	public void saveOrUpdate(Telefone telefone) {
+	public Telefone saveOrUpdate(Telefone telefone, Usuario u) {
+		telefone.setUsuario(u);
 		if (telefone.getId() != null) {
-			telefone = telefoneDAO.update(telefone);
+			return telefone = telefoneDAO.update(telefone);
 		} else {
-			telefoneDAO.insert(telefone);
+			return telefoneDAO.insert(telefone);
 		}
 	}
 		

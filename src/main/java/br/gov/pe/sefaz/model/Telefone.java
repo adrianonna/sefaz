@@ -2,6 +2,7 @@ package br.gov.pe.sefaz.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class Telefone implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="nu_id")
+//	@Column(name="nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -30,8 +31,8 @@ public class Telefone implements Serializable{
 	@Column(name="nm_tipo")
 	private String tipo;
 
-	@ManyToOne
-	@JoinColumn(name="id_usuario", referencedColumnName = "nu_id")
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name="usuario_id") //, referencedColumnName = "id"
 	private Usuario usuario;
 
 	

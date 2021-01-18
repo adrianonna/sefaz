@@ -44,11 +44,11 @@ public class UsuarioController implements Serializable{
 	}
 	
 	@Transactional
-	public void saveOrUpdate(Usuario usuario) {
+	public Usuario saveOrUpdate(Usuario usuario) {
 		if (usuario.getId() != null) {
-			usuario = usuarioDAO.update(usuario);
+			return usuario = usuarioDAO.update(usuario);
 		} else {
-			usuarioDAO.insert(usuario);
+			return usuarioDAO.insert(usuario);
 		}
 	}
 		

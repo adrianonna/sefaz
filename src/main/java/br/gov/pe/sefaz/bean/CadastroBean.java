@@ -3,6 +3,8 @@ package br.gov.pe.sefaz.bean;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,14 +49,8 @@ public class CadastroBean extends GenericoSefazBean implements Serializable{
 		Integer idu = usuario.getId();
 		Integer idt = telefone.getId();
 		
-		uController.saveOrUpdate(usuario);
-		tController.saveOrUpdate(telefone);
-		
-		
-		System.out.println("Telefones= "+usuario.getTelefones()+" do usuario "+usuario);
-		System.out.println("Usuario.getId()= "+usuario.getId());
-		System.out.println("Telefones= "+telefone);
-		System.out.println("Telefones.getId()= "+telefone.getId());
+		Usuario u = uController.saveOrUpdate(usuario);
+		tController.saveOrUpdate(telefone, u);
 		
 		this.keepMessages();
 		if (idu == null && idt == null) {
@@ -63,10 +59,20 @@ public class CadastroBean extends GenericoSefazBean implements Serializable{
 			this.addInfoMessage("Usuarios atualizado com sucesso!");	
 		}
 		
-		
 		usuario = new Usuario();
 		telefone = new Telefone();
 
+		return "consulta?faces-redirect=true";
+	}
+	
+	public String alterarNumero() {
+		Integer idu = usuario.getId();
+		Integer idt = telefone.getId();
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		System.out.println("idu= "+idu);
+		System.out.println("idt= "+idt);
+		System.out.println("flash.get(\"telefone\")= "+flash.get("telefone"));
+		System.out.println("flash.get(\"usuario\")= "+flash.get("usuario"));
 		return "consulta?faces-redirect=true";
 	}
 	

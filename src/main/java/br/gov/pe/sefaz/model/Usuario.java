@@ -19,7 +19,6 @@ public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -75,7 +74,6 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 	
-	
 	public List<Telefone> getTelefones() {
 		return telefones;
 	}
@@ -111,6 +109,6 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
+		return "Usuario [nome=" + nome + ", email=" + email + ", senha=" + senha + ", telefones=" + telefones + "]";
 	}
 }

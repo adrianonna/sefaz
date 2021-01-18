@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Edição</title>
+	<h:outputStylesheet library="css" name="index.css" />
+</h:head>
+<h:body style="font-family: Calibri">
+
+	<div class="titulo">
+		<i class="fa fa-user icon-space" />Edição de telefone
+	</div>
+	
+	<h:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
+	
+	<p:button href="../index.xhtml" value="Início"/>
+	<p:button href="consulta.xhtml" value="Consultar usuários"/>
+	
+	<p:outputPanel id="panel" header="Formulário de edição" style="background-color:#ededed">
+	<p:focus context="panel" />
+		<h:form id="cad-usuario">
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-3">
+					<p:outputLabel value="DDD:" for="ddd" />
+					<p:inputText value="#{flash.keep.telefone.ddd}" id="ddd" maxlength="2"
+						required="true" requiredMessage="DDD é obrigatório!"/>
+					<p:tooltip for="ddd" value="Informe seu DDD!" position="bottom" />
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Numero:" for="numero" />
+					<p:inputText value="#{flash.keep.telefone.numero}" id="numero"
+						required="true" requiredMessage="Número é obrigatório!"/>
+					<p:tooltip for="numero" value="Informe seu número!" position="bottom" />
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Tipo:" for="tipo" />
+					<p:inputText value="#{flash.keep.telefone.tipo}" id="tipo"
+						required="true" requiredMessage="Tipo é obrigatório!"/>
+					<p:tooltip for="tipo" value="Informe o tipo!" position="bottom" />
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText value="#{flash.keep.usuario.nome}" id="nome"
+						required="true" requiredMessage="Tipo é obrigatório!"/>
+					<p:tooltip for="nome" value="Informe o nome!" position="bottom" />
+				</div>
+			</div>
+			
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-2">
+					<p:commandButton action="#{consultaBean.alterarNumero(flash.keep.telefone.id, flash.keep.usuario.id)}" value="Salvar" ajax="false"/>
+				</div>
+			</div>
+		</h:form>
+	</p:outputPanel>
+	
+</h:body>
+</html>

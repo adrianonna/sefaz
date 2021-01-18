@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	
 <f:metadata>
 	<f:viewParam name="id" value="#{consultaBean.id}" />
@@ -26,7 +27,7 @@
 	<p:focus context="panel" />
 		<h:form id="cons-usuario">
 			<p:button href="../index.xhtml" value="Início"/>
-			<p:commandButton value="Cadastrar" action="cadastro"/><br/><br/>
+			<p:commandButton value="Cadastrar Usuário" action="cadastro"/><br/><br/>
 			<p:commandButton action="#{consultaBean.excluirSelecionados}" value="Excluir selecionados" icon="fa fa-trash" ajax="false"/>
 			
 			<p:dataTable value="#{consultaBean.usuarios}" var="usuario"
@@ -52,7 +53,12 @@
 				
 				<p:column headerText="Ações">
 					<p:commandButton action="#{consultaBean.excluir(usuario)}" value="Excluir" title="Excluir" icon="fa fa-trash" ajax="false"/>
-					<p:commandButton action="#{consultaBean.editar(usuario)}" value="Editar" title="Editar" icon="fa fa-edit" ajax="false"/>
+					<ui:remove>
+						<!-- <p:commandButton action="#{consultaBean.editar(usuario)}" value="Editar Usuario e Adicionar número" title="Editar" icon="fa fa-edit" ajax="false"/> -->
+					</ui:remove>
+					<p:commandButton action="#{consultaBean.adicionarTelefone(usuario)}" value="Adicionar número" title="Adicionar Número" icon="fa fa-edit" ajax="false"/>
+					<p:commandButton action="#{consultaBean.editarUsuario(usuario)}" value="Editar usuário" title="Editar usuário" icon="fa fa-edit" ajax="false"/>
+					<p:commandButton action="#{consultaBean.editarNumeros(usuario)}" value="Editar números" title="Editar números" icon="fa fa-edit" ajax="false"/>
 				</p:column>
 			</p:dataTable>
 		</h:form>
